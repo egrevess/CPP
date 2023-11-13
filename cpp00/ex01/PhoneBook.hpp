@@ -6,7 +6,7 @@
 /*   By: emmagrevesse <emmagrevesse@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:11:40 by emmagrevess       #+#    #+#             */
-/*   Updated: 2023/04/27 09:40:14 by emmagrevess      ###   ########.fr       */
+/*   Updated: 2023/11/10 14:47:04 by emmagrevess      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ private:
 	std::string	_recup_str(std::string msg) const;
 
 public:
-	PhoneBook (void); // constructeur , ils n'ont tous les deux pas de type de retour , on peut quand même mettre un return 
+	PhoneBook (void); // constructeur 
 	~PhoneBook (void); // destructeur avec une vague en plus 
 
 	void	add();
-	void	search() ;
+	void	search() const;
 };
 
 #endif

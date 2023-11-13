@@ -1,29 +1,31 @@
-NAME = Phonebook
+NAME	= phonebook
 
-SRCS = Contact.cpp \
-		PhoneBook.cpp \
-		main.cpp \
+SRCS	= PhoneBook.cpp \
+			Contact.cpp \
+			main.cpp
 
-OBJECT = $(SRCS:.cpp=.o)
+OBJDIR	= objs
 
-CC = g++
+CC		= g++
+CFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-CFLAGS = -Wall -Wextra -Werror -g
+OBJS	= $(addprefix ${OBJDIR}/, $(addsuffix .o, $(basename ${SRCS})))
 
-$(NAME): $(OBJECT)
-	$(CC) $(CFLAGS) -o $(NAME) -fsanitize=address $(OBJECT)
+${OBJDIR}/%.o: %.cpp
+			@mkdir -p ${OBJDIR}
+			${CC} ${CFLAGS} -c -o $@ $<
 
-.cpp.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+${NAME}:	${OBJS}
+			${CC} ${OBJS} -o ${NAME}
 
-all: $(NAME)
+all:		${NAME}
 
 clean:
-	rm -f $(OBJECT)
+			rm -rf ${OBJDIR}
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
+			rm -f ${NAME}
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re NAME

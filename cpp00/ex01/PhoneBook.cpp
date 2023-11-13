@@ -6,7 +6,7 @@
 /*   By: emmagrevesse <emmagrevesse@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:19:55 by emmagrevess       #+#    #+#             */
-/*   Updated: 2023/04/27 09:40:15 by emmagrevess      ###   ########.fr       */
+/*   Updated: 2023/11/10 14:46:01 by emmagrevess      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	PhoneBook::add()
 		this->_nb_contact++;
 	if (this->_index < 7)
 		this->_index++;
+	else if (this->_index == 7)
+		this->_index = 0;
 	std::cout << "New contact is saved" << std::endl;
 }
 
@@ -48,7 +50,7 @@ std::string	PhoneBook::_recup_str(std::string msg) const
 	return(str);
 }
 
-void	PhoneBook::search()
+void	PhoneBook::search() const
 {
 	int			index;
 
