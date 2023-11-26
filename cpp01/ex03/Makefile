@@ -6,38 +6,39 @@
 #    By: emmagrevesse <emmagrevesse@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/27 12:09:04 by emmagrevess       #+#    #+#              #
-#    Updated: 2023/04/27 12:09:58 by emmagrevess      ###   ########.fr        #
+#    Updated: 2023/11/23 10:58:34 by emmagrevess      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Weapon
+NAME	= Weapon
 
-SRCS =	main.cpp \
-		Weapon.cpp \
-		HumanB.cpp \
-		HumanA.cpp \
+SRCS	= main.cpp \
+			Weapon.cpp \
+			HumanA.cpp \
+			HumanB.cpp \
 
+OBJDIR		= objs
 
-OBJECT = $(SRCS:.cpp=.o)
+CC			= c++
+CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-CC = g++
+OBJS		= $(addprefix ${OBJDIR}/, $(addsuffix .o, $(basename ${SRCS})))
 
-CFLAGS = -Wall -Wextra -Werror -g
+${OBJDIR}/%.o: %.cpp
+			@mkdir -p ${OBJDIR}
+			${CC} ${CFLAGS} -c -o $@ $<
 
-$(NAME): $(OBJECT)
-	$(CC) $(CFLAGS) -o $(NAME) -fsanitize=address $(OBJECT)
+${NAME}:	${OBJS}
+			${CC} ${OBJS} -o ${NAME}
 
-.cpp.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
-
-all: $(NAME)
+all:		${NAME}
 
 clean:
-	rm -f $(OBJECT)
+			rm -rf ${OBJDIR}
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
+			rm -f ${NAME}
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re NAME

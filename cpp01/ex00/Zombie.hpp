@@ -6,7 +6,7 @@
 /*   By: emmagrevesse <emmagrevesse@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:54:50 by emmagrevess       #+#    #+#             */
-/*   Updated: 2023/04/27 11:38:30 by emmagrevess      ###   ########.fr       */
+/*   Updated: 2023/11/23 10:30:00 by emmagrevess      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 #include <iostream>
 
-class Zombie {
+class Zombie 
+{
+	private:
+		std::string _name;
 
-private:
-	std::string _name;
+	public:
+		Zombie (std::string name);
+		~Zombie (void);
 
-public:
-	Zombie (std::string name); // constructeur , ils n'ont tous les deux pas de type de retour , on peut quand même mettre un return 
-	~Zombie (void); // destructeur avec une vague en plus 
-
-	void announce(void);
+		void announce(void) const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emmagrevesse <emmagrevesse@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 18:57:43 by emmagrevess       #+#    #+#             */
-/*   Updated: 2023/05/24 14:09:56 by emmagrevess      ###   ########.fr       */
+/*   Updated: 2023/11/23 11:40:55 by emmagrevess      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ int	main(int ac, char **av)
 		std::string line;
     	while (std::getline(file, line)) 
 		{
-			size_t pos = line.find(s1); 
-			if (pos != std::string::npos)
+			size_t pos = line.find(s1);
+			while (pos != std::string::npos)
+			{
 				line = ft_replace(pos, line, s1, s2);
-        	new_file << line << std::endl;
-		
+				pos = line.find(s1);
+			}
+			new_file << line << std::endl;
 		}
 		file.close();
    		new_file.close();

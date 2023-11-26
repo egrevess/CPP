@@ -6,7 +6,7 @@
 /*   By: emmagrevesse <emmagrevesse@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 11:10:53 by emmagrevess       #+#    #+#             */
-/*   Updated: 2023/04/27 11:43:38 by emmagrevess      ###   ########.fr       */
+/*   Updated: 2023/11/23 10:48:37 by emmagrevess      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 # include <iostream>
 
-class Zombie {
+class Zombie 
+{
+	private:
+		std::string _name;
 
-private:
-	std::string _name;
+	public:
+		Zombie();
+		Zombie (std::string name);
+		~Zombie (void);
 
-public:
-	Zombie();
-	Zombie (std::string name);
-	~Zombie (void);
-
-	void announce(void);
-	void put_name(std::string name);
+		void announce(void) const;
+		void put_name(std::string name);
 };
 
 #endif

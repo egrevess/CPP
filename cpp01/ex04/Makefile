@@ -1,27 +1,41 @@
-NAME = Replace
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: emmagrevesse <emmagrevesse@student.42.f    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/23 11:23:51 by emmagrevess       #+#    #+#              #
+#    Updated: 2023/11/23 11:23:54 by emmagrevess      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS =	main.cpp \
+NAME	= Replace 
 
-OBJECT = $(SRCS:.cpp=.o)
+SRCS	= main.cpp
 
-CC = g++
+OBJDIR	= objs
 
-CFLAGS = -Wall -Wextra -Werror -g
+CC		= g++
+CFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-$(NAME): $(OBJECT)
-	$(CC) $(CFLAGS) -o $(NAME) -fsanitize=address $(OBJECT)
+OBJS	= $(addprefix ${OBJDIR}/, $(addsuffix .o, $(basename ${SRCS})))
 
-.cpp.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+${OBJDIR}/%.o: %.cpp
+			@mkdir -p ${OBJDIR}
+			${CC} ${CFLAGS} -c -o $@ $<
 
-all: $(NAME)
+${NAME}:	${OBJS}
+			${CC} ${OBJS} -o ${NAME}
+
+all:		${NAME}
 
 clean:
-	rm -f $(OBJECT)
+			rm -rf ${OBJDIR}
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
+			rm -f ${NAME}
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re NAME
