@@ -1,13 +1,13 @@
 #include "ClapTrap.hpp"
-#include "FlagTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main()
 {
-	FlagTrap	Nico("nico");
-	FlagTrap	Louise("louise");
+	ScavTrap	Nico("nico");
+	ScavTrap	Louise("louise");
 	ClapTrap	claude("Claude");
 
-	Nico.highFivesGuys();
+	Nico.guardGate();
 	Louise.attack("Nico");
 	Nico.takeDamage(Louise.getAttackDamage());
 	claude.attack("Nico");

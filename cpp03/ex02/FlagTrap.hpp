@@ -6,17 +6,12 @@
 
 class FlagTrap : public ClapTrap
 {
-private:
-		std::string _name;
-		unsigned int	_hit_point;
-		unsigned int	_energy_point;
-		unsigned int	_attack_damage;
-
 public:
         FlagTrap ();
 		FlagTrap(const std::string &name);
+		FlagTrap(const FlagTrap &copy);
         ~FlagTrap();
-		
+		FlagTrap	&operator=(const FlagTrap &copy);
 		void highFivesGuys(void);
 
 };

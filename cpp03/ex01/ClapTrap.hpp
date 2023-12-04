@@ -5,7 +5,7 @@
 
 class ClapTrap{
 
-private:
+protected:
 		std::string _name;
 		unsigned int	_hit_point;
 		unsigned int	_energy_point;
@@ -14,8 +14,10 @@ private:
 
 public:
         ClapTrap ();
-		ClapTrap(const std::string name);
+		ClapTrap(const std::string &name);
+		ClapTrap(const ClapTrap &copy);
         ~ClapTrap();
+		ClapTrap	&operator=(const ClapTrap &copy);
 		void attack(const std::string& target); // reférencement pour éviter de faire une copie
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);

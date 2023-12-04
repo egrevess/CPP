@@ -7,19 +7,13 @@
 class ScavTrap : public ClapTrap
 {
 
-private:
-		std::string 	_name;
-		unsigned int	_hit_point;
-		unsigned int	_energy_point;
-		unsigned int	_attack_damage;
-
-
-
 public:
         ScavTrap ();
 		ScavTrap(const std::string& name);
+		ScavTrap(const ScavTrap &copy);
         ~ScavTrap();
 
+		ScavTrap	&operator=(const ScavTrap &copy);
 		void attack(const std::string& target);
 		void guardGate();
 		// referencement si on modifie la valeur dans une fonction elle ne sera pas modifiée ailleurs 

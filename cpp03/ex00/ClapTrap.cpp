@@ -2,10 +2,14 @@
 
 ClapTrap::ClapTrap()
 {
-
+	this->_name = "";
+	this->_hit_point = 10;
+	this->_energy_point = 10;
+	this->_attack_damage = 0;
+	std::cout << "ClapTrap constructor (default) called\n";
 }
 
-ClapTrap::ClapTrap (std::string name)
+ClapTrap::ClapTrap (const std::string &name)
 {
 	this->_name = name;
 	this->_hit_point = 10;
@@ -14,9 +18,28 @@ ClapTrap::ClapTrap (std::string name)
 	std::cout << "Player " << this->_name << " is created" << std::endl;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &copy)
+{
+	this->_name = copy._name;
+	this->_hit_point = copy._hit_point;
+	this->_energy_point = copy._energy_point;
+	this->_attack_damage = copy._attack_damage;
+	std::cout << "ClapTrap copy constructor called\n";
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "Player " << this->_name << " is destroyed" << std::endl;
+}
+ClapTrap	&ClapTrap::operator=(const ClapTrap &copy)
+{
+	if (this != &copy) { // Vérification d'auto-affectation
+        this->_name = copy._name;
+        this->_hit_point = copy._hit_point;
+        this->_energy_point = copy._energy_point;
+        this->_attack_damage = copy._attack_damage;
+    }
+    return *this;
 }
 
 void ClapTrap::attack(const std::string& target)

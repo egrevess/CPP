@@ -1,8 +1,8 @@
-NAME = ScavTrap
+NAME = FlagTrap
 
 SRCS =	main.cpp \
 		ClapTrap.cpp \
-		ScavTrap.cpp \
+		FlagTrap.cpp 
 
 OBJECT = $(SRCS:.cpp=.o)
 
