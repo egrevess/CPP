@@ -7,9 +7,24 @@ Dog::Dog() : Animal()
 	std::cout << "Dog is created" << std::endl;
 }
 
+Dog::Dog (const Dog &copy)
+{
+	this->_type = copy._type;
+	std::cout << "Dog copy constructor called\n";
+}
+
 Dog::~Dog()
 {
 	std::cout << "Dog is destructed" << std::endl;
+}
+
+Dog	&Dog::operator=(const Dog &copy)
+{
+	if (this != &copy)
+	{
+		this->_type = copy._type;
+	}
+	return *this;
 }
 
 void	Dog::makeSound() const

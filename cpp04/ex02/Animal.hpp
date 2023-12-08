@@ -8,14 +8,14 @@ class Animal {
 	private:
 		std::string _type;
 
-	protected : //pas sûre que ce soit correct parce que tout marche toujours bien 
-		Animal();
-
 	public:
+		Animal();
+		Animal(const Animal &copy);
 		virtual ~Animal();
 
+		Animal	&operator=(const Animal &copy);
 		std::string getType() const;
-		virtual void makeSound(void) const = 0;
+		virtual void makeSound(void) const;
 
 };
 

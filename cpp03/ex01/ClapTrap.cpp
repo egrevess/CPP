@@ -35,10 +35,10 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &copy)
 {
 	if (this != &copy)
 	{
-	this->_name = copy._name;
-	this->_hit_point = copy._hit_point;
-	this->_energy_point = copy._energy_point;
-	this->_attack_damage = copy._attack_damage;
+		this->_name = copy._name;
+		this->_hit_point = copy._hit_point;
+		this->_energy_point = copy._energy_point;
+		this->_attack_damage = copy._attack_damage;
 	}
 	return *this;
 }
