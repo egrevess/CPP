@@ -6,7 +6,7 @@
 #    By: emmagrevesse <emmagrevesse@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 11:23:51 by emmagrevess       #+#    #+#              #
-#    Updated: 2023/11/23 11:23:54 by emmagrevess      ###   ########.fr        #
+#    Updated: 2023/11/27 11:38:38 by emmagrevess      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS	= main.cpp
 
 OBJDIR	= objs
 
-CC		= g++
+CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 OBJS	= $(addprefix ${OBJDIR}/, $(addsuffix .o, $(basename ${SRCS})))

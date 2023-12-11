@@ -8,7 +8,7 @@ Fixed::Fixed()
 
 Fixed::Fixed (const int &nb)
 {
-	this->nb_float = nb << this->nb_bits;
+	this->nb_float = nb << this->nb_bits; // décale nb de 8 bits vers la gauche 
 	std::cout << "Int constructor called" << std::endl ;
 }
 
@@ -60,4 +60,7 @@ std::ostream	&operator<<(std::ostream &os, const Fixed &fixed)
 {
 	os << fixed.toFloat();
 	return os;
-}
+} // os << fixed.toFloat(); : Cela appelle la méthode toFloat() de l'objet Fixed, 
+//qui convertit 
+//sa valeur en virgule fixe en un nombre flottant. Puis, 
+//cet opérateur << insère ce nombre flottant dans le flux os.

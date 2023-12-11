@@ -6,16 +6,13 @@
 
 class Dog : public Animal 
 {
-	private: 
-		std::string	_type;
-
 	public:
 		Dog();
 		Dog(const Dog &copy);
 		~Dog();
 
 		Dog	&operator=(const Dog &copy);
-		virtual void	makeSound() const;
+		void	makeSound() const;
 };
 
 #endif 

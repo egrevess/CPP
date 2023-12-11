@@ -3,11 +3,11 @@
 
 Dog::Dog() : Animal()
 {
-	this->_type = "Dog";
+	this->_type = "dog";
 	std::cout << "Dog is created" << std::endl;
 }
 
-Dog::Dog (const Dog &copy)
+Dog::Dog (const Dog &copy) : Animal(copy)
 {
 	this->_type = copy._type;
 	std::cout << "Dog copy constructor called\n";

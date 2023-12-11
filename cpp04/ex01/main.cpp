@@ -1,10 +1,7 @@
 #include "Animal.hpp"
-#include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
-#include "Brain.hpp"
-
+#include "Cat.hpp"
+#include <iostream>
 
 int main()
 {
@@ -30,7 +27,18 @@ int main()
 	std::cout << cat.getIdea(1) << std::endl;
 	std::cout << copy.getIdea(0) << std::endl;
 	std::cout << copy.getIdea(1) << std::endl;
-	std::cout << "coucou" << std::endl;
-	
+	std::cout << std::endl;
+	/*
+	Cat catcat;
+	catcat.addIdea("Idea 1 for cat");
+
+	Cat copy(catcat); // Faire une copie profonde
+	catcat.addIdea("New idea for cat"); // Ajouter une idée après la copie
+
+	// Vérification
+	std::cout << "Original Cat Idea at Index 1: " << catcat.getIdea(1) << std::endl;
+	std::cout << "Copy Cat Idea at Index 1: " << copy.getIdea(1) << std::endl;
+	*/
+		
 	return 0;
-} 
+}

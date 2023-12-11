@@ -1,12 +1,12 @@
 # include "WrongAnimal.hpp"
 # include "WrongCat.hpp"
 
-WrongCat::WrongCat()
+WrongCat::WrongCat() : WrongAnimal()
 {
 	this->_type = "WrongCat";
 	std::cout << "WrongCat is created" << std::endl;
 }
-WrongCat::WrongCat (const WrongCat &copy)
+WrongCat::WrongCat (const WrongCat &copy) : WrongAnimal(copy)
 {
 	this->_type = copy._type;
 	std::cout << "WrongCat copy constructor called\n";

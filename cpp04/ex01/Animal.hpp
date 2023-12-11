@@ -5,7 +5,7 @@
 
 class Animal {
 
-	private:
+	protected:
 		std::string _type;
 
 	public:

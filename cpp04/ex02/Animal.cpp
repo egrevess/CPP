@@ -1,7 +1,5 @@
 # include "Animal.hpp"
 
-# include "Animal.hpp"
-
 Animal::Animal()
 {
 	this->_type = "Animal";

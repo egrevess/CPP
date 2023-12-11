@@ -5,21 +5,19 @@
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : public Animal 
 {
-	private: 
-		std::string	_type;
-		Brain 	*_brain;
-
+	private:
+		Brain *_brain;
 	public:
 		Dog();
 		Dog(const Dog &copy);
 		~Dog();
-		Dog	&operator=(const Dog &copy);
 
-		virtual void	makeSound() const;
+		Dog	&operator=(const Dog &copy);
+		void	makeSound() const;
 		void			addIdea(const std::string &idea);
-		std::string		getIdea(int i) const;
+		std::string		getIdea(unsigned int index) const;
 };
 
 #endif 

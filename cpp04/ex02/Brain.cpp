@@ -19,10 +19,12 @@ Brain::~Brain()
 
 Brain	&Brain::operator=(const Brain &copy)
 {
-	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = copy._ideas[i];
-	this->_index = copy._index;
-
+	if (this != &copy)
+	{
+		for (int i = 0; i < 100; i++)
+			this->_ideas[i] = copy._ideas[i];
+		this->_index = copy._index;
+	}
 	return *this;
 }
 

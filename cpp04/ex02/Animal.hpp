@@ -5,7 +5,7 @@
 
 class Animal {
 
-	private:
+	protected:
 		std::string _type;
 
 	public:
@@ -15,7 +15,7 @@ class Animal {
 
 		Animal	&operator=(const Animal &copy);
 		std::string getType() const;
-		virtual void makeSound(void) const;
+		virtual void makeSound(void) const = 0;
 
 };
 
