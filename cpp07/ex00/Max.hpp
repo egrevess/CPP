@@ -6,7 +6,7 @@
 
 // Déclaration de la fonction template
 template <typename T>
-T max(T& par1, T& par2)
+T& max(T& par1, T& par2)
 {
 	if (par1 <= par2)
 		return par2;

@@ -3,16 +3,15 @@
 
 int main() {
     int intArray[] = {1, 2, 3, 4, 5};
-    int intSize = (int) sizeof(intArray) / (int) sizeof(intArray[0]);
-
+	std::string stringArray[] = {"Coucou", "oups", "non"};
     double doubleArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
-    int doubleSize = (int) sizeof(doubleArray) / (int) sizeof(doubleArray[0]);
 
     // Appel de la fonction iter avec le tableau d'entiers et la fonction PrintValue
-    iter(intArray, intSize, PrintValue<const int>);
+    iter(intArray, 5, PrintValue<const int>);
 
     // Appel de la fonction iter avec le tableau de doubles et la fonction PrintValue
-    iter(doubleArray, doubleSize, PrintValue<double>);
+    iter(doubleArray, 5, PrintValue<double>);
 
+	iter(stringArray, 3, PrintValue<std::string>);
     return 0;
 }

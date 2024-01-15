@@ -1,0 +1,7 @@
+Les templates :
+Les templates en C++ sont utilisés pour créer des fonctions ou 
+des classes génériques qui peuvent fonctionner avec n'importe 
+quel type de données. Cela permet de réduire la duplication de 
+code lorsque vous avez besoin de fonctionnalités similaires pour 
+différents types de données.
+

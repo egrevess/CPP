@@ -23,11 +23,10 @@ Form::~Form()
 }
 
 
-Form	&Form::operator=(const Form &copy) // pas compris pourquoi on ne prend pas en compte name , a quoi sert ce truc en fait ?
+Form	&Form::operator=(const Form &copy)
 {
-	std::cout << "Form operator called" << std::endl;
-	this->_name = copy._name;
 	this->_signed = copy._signed;
+	std::cout << "Form operator called" << std::endl;
 	return (*this);
 }
 

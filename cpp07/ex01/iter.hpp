@@ -11,20 +11,31 @@ void	PrintValue(T& element)
 }
 
 template <typename T>
-void iter(T* array, int size, void (*func)(T& element))
+void iter(T* array, size_t size, void (*func)(T& element))
 {
-	for (int i = 0; i < size; ++i) 
+	if (array == nullptr) {
+        std::cerr << "Error: Array is null." << std::endl;
+        return;
+    }
+	for (size_t i = 0; i < size; ++i) 
 	{
         func(array[i]);
     }
 }
 
 template <typename T>
-void iter(T* array, int size, void (*func)(const T& element))
+void iter(T* array, size_t size, void (*func)(const T& element))
 {
-	for (int i = 0; i < size; ++i) 
+	if (array == nullptr) {
+        std::cerr << "Error: Array is null." << std::endl;
+        return;
+    }
+	for (size_t i = 0; i < size; ++i) 
 	{
         func(array[i]);
     }
 }
+// ne modifie pas les valeurs de array
+// ne sert a rien de protéger func, vérifier l'existence d'une fonction à l'exécution en C++,
+// car il s'agit d'un langage compilé et non interprété 
 #endif

@@ -1,34 +1,26 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# include <map>
 # include <string>
 # include <iostream>
-# include <vector> // Inclure l'en-tête pour std::min et std::max
-# include <iterator> 
-
-
-template <typename T>
+# include <fstream>
+# include <sstream>
+ 
 class BitcoinExchange
 {
 	private :
-		unsigned int		_n;
-		std::vector<int>	_vector;
+		std::map<std::string, double> _priceData;
 ;
 	public :
 		BitcoinExchange();
-		BitcoinExchange(unsigned int n);
-		BitcoinExchange(const BitcoinExchange<T> &copy);
+		BitcoinExchange(const BitcoinExchange &copy);
 		~BitcoinExchange();
-		BitcoinExchange<T>	&operator=(const BitcoinExchange<T> &copy);
+		BitcoinExchange	&operator=(const BitcoinExchange &copy);
 
-		class DistanceNotFound : public std::exception 
-		{
-    		public:
-        		const char* what() const throw() //utilisation de throw car je gère moi même les exceptions
-				{
-            		return "Impossible to found a distance!"; // définition de what car je gère moi même le message d'erreur 
-       			}
-   		};
+		void	processInputFile(const std::string& inputFilename);
+		bool	isLeapYear(int year);
+		bool	isValidDate(const std::string& date);
 
 };
 

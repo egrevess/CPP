@@ -1,17 +1,12 @@
+
+#include "ScalarConverter.hpp"
 #include <iostream>
-#include <string>
 
-void	convert(std::string input);
-
-int main(int argc, char** argv) {
-    if (argc < 2) 
-	{
-        std::cout << "Pas assez d'arguments fournis." << std::endl;
-        return 0;
-    }
-
-    std::string input = argv[1];
-	convert(input);
-
+int main(int ac, char **av) {
+    
+	if (ac == 2)
+		ScalarConverter::convert(av[1]);
+	else
+		std::cout << "Wrong number of arguments" << std::endl;
     return 0;
 }

@@ -1,7 +1,7 @@
-NAME = Span
+NAME = Base
 
 SRCS =	main.cpp \
-		Span.cpp \
+		Base.cpp \
 
 OBJDIR		= objs
 

@@ -24,14 +24,12 @@ int main()
 		Bureaucrat	b("Claude", 160);
 		std::cout << b << std::endl;
 	}
-
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
 	std::cout << "end Claude" << std::endl;
-
 	try
 	{
 		Bureaucrat	c("Danny", -1);
@@ -41,7 +39,7 @@ int main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-
 	std::cout << "end Danny" << std::endl;
+	
 	return 0;
 }

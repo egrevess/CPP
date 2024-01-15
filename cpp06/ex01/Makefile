@@ -1,7 +1,8 @@
-NAME = Span
+NAME = Serializer
 
 SRCS =	main.cpp \
-		Span.cpp \
+		Serializer.cpp \
+		Data.cpp
 
 OBJDIR		= objs
 

@@ -1,30 +1,33 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
-# include <string>
-# include <iostream>
-# include <vector>
-# include <algorithm> // Inclure l'en-tête pour std::min et std::max
-# include <iterator> 
 
+#include <string>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <limits>
 
-template <typename T>
-class Span
-{
-	private :
-		unsigned int		_n;
-		std::vector<int>	_vector;
-;
-	public :
-		Span();
-		Span(unsigned int n);
-		Span(const Span<T> &copy);
-		~Span();
-		Span<T>	&operator=(const Span<T> &copy);
+class Span {
+private:
+    unsigned int 		_n;
+    std::vector<int> 	_vector;
 
-		void			addNumber(int number);
-		unsigned int	shortestSpan();
-		unsigned int	longestSpan();
+public:
+	Span();
+    Span(unsigned int n);
+    Span(const Span &copy);
+    ~Span();
+    Span &operator=(const Span &copy);
+
+    void addNumber(int number);
+    void	addNumbers(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end);
+    unsigned int shortestSpan() ;
+    unsigned int longestSpan() const;
+	std::vector<int>::const_iterator	begin() const;
+	std::vector<int>::const_iterator	end() const;
+
 
 		class LimitReached : public std::exception 
 		{

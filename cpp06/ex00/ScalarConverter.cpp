@@ -26,11 +26,13 @@ void	ScalarConverter::convert(std::string str)
 {
 	//Check non displayable characters
 	for (int i = 0; str[i]; i++)
+	{
 		if (!isprint(str[i]))
 		{
-			std::cout << "Use of non displayable characters is not allowed\n";
+			std::cout << "Non displayable characters" << std::endl;
 			return;
 		}
+	}
 
 	// Check char
 	if (str.size() == 1 && !isdigit(str[0]))
@@ -56,7 +58,7 @@ void	ScalarConverter::convert(std::string str)
 			dot++;
 		i++;
 	}
-	if (str[i] == 'f' && dot <= 1 && str[i + 1] == 0)
+	if (str[i] == 'f' && dot <= 1 && str[i + 1] == 0) // bon pour 42.f, c'est également considéré comme un float 
 		return ScalarConverter::_toFloat(str);
 	if (str == "-inff" || str == "+inff" || str == "nanf")
 		return ScalarConverter::_toFloat(str);
@@ -77,18 +79,15 @@ void	ScalarConverter::convert(std::string str)
 	if (str == "-inf" || str == "+inf" || str == "nan")
 		return ScalarConverter::_toDouble(str);
 
-	std::cout << "Impossible convertion\nSupported types are <char>, <int>, "
-		<< "<float> and <double>\n";
+	std::cout << "it\'s not a <char>, <int>, <float> or <double>" << std::endl;
 }
 
 void	ScalarConverter::_toChar(std::string str)
 {
-	char	c = str[0];
-
-	std::cout << "char: '" << c << "'\n";
-	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << "float: " << static_cast<float>(c) << ".0f\n";
-	std::cout << "double: " << static_cast<double>(c) << ".0\n";
+	std::cout << "char: '" << str << "'\n";
+	std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
+	std::cout << "float: " << static_cast<float>(str[0]) << ".0f\n";
+	std::cout << "double: " << static_cast<double>(str[0]) << ".0\n";
 }
 
 void	ScalarConverter::_toInt(std::string str)
@@ -130,7 +129,7 @@ void	ScalarConverter::_toFloat(std::string str)
 			<< std::endl;
 		return ;
 	}
-	n = strtof(str.c_str(), NULL);
+	n = strtof(str.c_str(), NULL); //transfo du nombre en float
 	if (n == HUGE_VALF || n == -HUGE_VALF || errno == ERANGE)
 	{
 		std::cout << "char: impossible\n";

@@ -34,5 +34,20 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
+	std::cout << "Array: ";
+	std::array<int, 10> arr;
+	for (int i = 0; i < 10; i++)
+		arr[i] = i;
+
+	try
+	{
+		easyfind(arr, 4);
+		easyfind(arr, 15);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
     return 0;
 }

@@ -1,29 +1,36 @@
 #include "Array.hpp"
+#include <iostream>
+#include <string>
 
 int main() {
-    // Test construction sans paramètres
-    Array<int> arr1;
-    std::cout << "Size of arr1: " << arr1.size() << std::endl;
-
-    // Test construction avec un paramètre
-    Array<double> arr2(5);
-    std::cout << "Size of arr2: " << arr2.size() << std::endl;
-
-    // Test accès et modification d'éléments
-    for (unsigned int i = 0; i < arr2.size(); ++i) {
-		arr2.PutValue(4,i);
-        arr2.GetValue(i);
+    // Création d'un Array d'entiers
+    Array<int> intArray(5);
+    for (unsigned int i = 0; i < intArray.size(); ++i) {
+        intArray[i] = i * 2; // Remplissage avec des valeurs
+        std::cout << "intArray[" << i << "] = " << intArray[i] << std::endl;
     }
-	arr2.GetValue(7);
 
-    // Test copie et affectation
-    Array<double> arr3 = arr2;
-    Array<double> arr4;
-    arr4 = arr3;
+    // Création d'un Array de chaînes de caractères
+    Array<std::string> stringArray(3);
+    stringArray[0] = "Hello";
+    stringArray[1] = "World";
+    stringArray[2] = "!";
+    for (unsigned int i = 0; i < stringArray.size(); ++i) {
+        std::cout << "stringArray[" << i << "] = " << stringArray[i] << std::endl;
+    }
 
-    // Test taille après copie et affectation
-    std::cout << "Size of arr3: " << arr3.size() << std::endl;
-    std::cout << "Size of arr4: " << arr4.size() << std::endl;
+    // Test de l'opérateur de copie
+    Array<int> copyArray = intArray;
+    for (unsigned int i = 0; i < copyArray.size(); ++i) {
+        std::cout << "copyArray[" << i << "] = " << copyArray[i] << std::endl;
+    }
+
+    // Test de l'accès hors limites (doit lancer une exception)
+   try {
+    std::cout << "Test de l'accès hors limites: " << intArray[10] << std::endl;
+	} catch (const Array<int>::OutOfRangeException& e) {
+    std::cerr << "Exception capturée: " << e.what() << std::endl;
+	}
 
     return 0;
 }

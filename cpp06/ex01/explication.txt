@@ -1,0 +1,27 @@
+L'exercice :
+Vous devez implémenter une classe Serializer en C++ qui effectue deux opérations :
+
+Sérialisation : Convertir un pointeur vers une structure Data en un entier non signé (uintptr_t).
+Désérialisation : Convertir cet entier non signé (uintptr_t) retour en un pointeur vers une structure Data.
+La classe Serializer ne doit pas être instanciable, c'est-à-dire que vous ne pouvez pas créer un objet de cette classe. Elle ne contient que des méthodes statiques.
+
+Structure Data :
+La structure Data est une structure simple que vous définissez, qui contient quelques variables. Cette structure est utilisée pour tester la classe Serializer.
+
+Code Expliqué :
+Structure Data :
+
+La structure Data contient des variables, par exemple, un entier (int number) et une chaîne de caractères (std::string text).
+Classe Serializer :
+
+La classe Serializer a un constructeur privé. Cela signifie que vous ne pouvez pas créer un objet de cette classe.
+Elle a deux méthodes statiques :
+serialize(Data* ptr) : Prend un pointeur vers Data et le convertit en uintptr_t en utilisant reinterpret_cast. reinterpret_cast est une opération de conversion en C++ qui convertit simplement un type en un autre sans changer les bits sous-jacents. Ici, elle convertit un pointeur en un entier.
+deserialize(uintptr_t raw) : Fait l'inverse de serialize. Elle prend un uintptr_t et le convertit en pointeur vers Data.
+Programme de test dans main :
+
+Vous créez une instance de Data nommée myData.
+Vous appelez Serializer::serialize(&myData) pour obtenir un uintptr_t représentant l'adresse de myData.
+Ensuite, vous appelez Serializer::deserialize(serialized) pour convertir ce uintptr_t en un pointeur vers Data.
+Enfin, vous comparez si le pointeur désérialisé est le même que le pointeur original (&myData). Si c'est le cas, la sérialisation et la désérialisation fonctionnent correctement.
+En résumé, la sérialisation et la désérialisation ici se réfèrent à la conversion entre un pointeur et un entier représentant l'adresse de ce pointeur. Ce processus est utile dans des contextes de bas niveau où vous devez manipuler des adresses mémoire ou lorsque vous interagissez avec des systèmes qui nécessitent des adresses sous forme d'entiers.

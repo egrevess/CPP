@@ -1,110 +1,66 @@
-#ifndef ARRAY_HPP 
-# define ARRAY_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
-# include <string>
-# include <iostream>
-
+#include <string>
+#include <iostream>
+#include <stdexcept> // Pour std::out_of_range
 
 template <typename T>
-class Array
-{
-	private :
-		unsigned int _size;
-		T* _array;
-;
+class Array {
+private:
+    unsigned int _size;
+    T* _array;
 
-	public :
-		Array();
-		Array(unsigned int n);
-		Array(const Array<T> &copy);
-		~Array();
-		Array<T>	&operator=(const Array<T> &copy);
+public:
+    Array() : _size(0), _array(nullptr) {}
 
-		unsigned int	size();
-		void			GetValue(unsigned int index);
-		void			PutValue(const T& value, unsigned int index);
+    Array(unsigned int n) : _size(n) {
+        if (n > 0) {
+            this->_array = new T[n]();
+        } else {
+            this->_array = nullptr;
+        }
+    }
 
-		class IndexInvalid : public std::exception 
+    Array(const Array<T>& copy) : _size(copy._size), _array(new T[copy._size]) {
+        for (unsigned int i = 0; i < this->_size; ++i) {
+            this->_array[i] = copy._array[i];
+        }
+    }
+
+    ~Array() {
+        delete[] this->_array;
+    }
+
+    Array<T>& operator=(const Array<T>& copy) {
+        if (this != &copy) {
+            delete[] this->_array;
+            this->_size = copy._size;
+            this->_array = new T[this->_size];
+            for (unsigned int i = 0; i < this->_size; ++i) {
+                this->_array[i] = copy._array[i];
+            }
+        }
+        return *this;
+    }
+
+    T& operator[](unsigned int index) {
+        if (index >= this->_size) throw Array::OutOfRangeException();;
+        return this->_array[index];
+    }
+
+	class OutOfRangeException: public std::exception
 		{
-    		public:
-        		const char* what() const throw() //utilisation de throw car je gère moi même les exceptions
-				{
-            		return "Index invalid!"; // définition de what car je gère moi même le message d'erreur 
-       			}
-   		};
+			public:
+			const char	*what() const throw()
+			{
+				return "[OutOfRangeException]";
+			}
+		};
 
+    unsigned int size() const {
+        return this->_size;
+    }
 };
-
-template<typename T>
-Array<T>::Array() : _size(0), _array(NULL)
-{
-}
-
-template<typename T>
-Array<T>::Array(unsigned int n) : _size(n) 
-{
-    _array = new T[n];
-}
-
-template<typename T>
-Array<T>::~Array(void) 
-{
-    delete[] _array;
-}
-
-template<typename T>
-Array<T>::Array(const Array<T> &copy)
-{
-	this->_size = copy._size;
-    _array = new T[copy._size];
-    for (unsigned int i = 0; i < _size; i++) {
-        this->_array[i] = copy._array[i];
-    }
-}
-
-template<typename T>
-Array<T> &Array<T>::operator=(const Array<T> &copy) 
-{
-    delete[] this->_array;
-    this->_size = copy._size;
-    this->_array = new T[copy._size];
-    for (unsigned int i = 0; i < _size; i++) {
-        this->_array[i] = copy._array[i];
-    }
-    return *this;
-}
-
-template<typename T>
-unsigned int Array<T>::size()
-{
-	return this->_size;
-}
-
-template<typename T>
-void Array<T>::GetValue(unsigned int index)
-{
-	try
-	{
-		if (index < _size) {
-			std::cout << "Value at index " << index << ": " << _array[index] << std::endl;
-		} 
-		else 
-		{
-			throw IndexInvalid();
-		}
-
-	}
-	catch (const IndexInvalid &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-}
-
-template<typename T>
-void	Array<T>::PutValue(const T& value, unsigned int index)
-{
-	if (index < this->_size && index >= 0)
-		this->_array[index] = value;
-}
 
 #endif

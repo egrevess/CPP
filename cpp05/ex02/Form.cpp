@@ -23,12 +23,11 @@ Form::~Form()
 }
 
 
-Form	&Form::operator=(const Form &copy) // pas compris pourquoi on ne prend pas en compte name , a quoi sert ce truc en fait ?
+Form	&Form::operator=(const Form &copy)
 {
-	std::cout << "Form operator called" << std::endl;
-	this->_name = copy._name;
 	this->_signed = copy._signed;
 	this->_target = copy._target;
+	std::cout << "Form operator called" << std::endl;
 	return (*this);
 }
 
@@ -68,7 +67,7 @@ void		Form::beSigned(Bureaucrat &bureaucrat)
 
 std::ostream& operator<<(std::ostream& os, const Form& Form)
 {
-    os << Form.getName() << ", Form grade signed : " << Form.getGradeSigned() << "Form target : " << Form.getTarget() <<
+    os << Form.getName() << ", Form grade signed : " << Form.getGradeSigned() << ", Form target : " << Form.getTarget() <<
 	", Form grade executed : " << Form.getGradeExec() << " and Form signed : " << Form.getSigned() <<
 	std::endl ;
     return os;
