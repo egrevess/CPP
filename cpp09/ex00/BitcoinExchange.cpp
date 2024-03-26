@@ -11,7 +11,6 @@ BitcoinExchange::BitcoinExchange()
             std::cerr << "data.csv: could not open file\n";
 			return ;
         }
-        // Ignorer la première ligne (en-tête)
         std::getline(file, line);
         while (std::getline(file, line)) 
 		{
@@ -22,7 +21,7 @@ BitcoinExchange::BitcoinExchange()
         }
         file.close();
 }
- . . . . . . . 
+
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) 
 {
     this->_priceData = copy._priceData;
@@ -103,7 +102,6 @@ void BitcoinExchange::processInputFile(const std::string& inputFilename)
             std::getline(linestream, date, '|');
             std::getline(linestream, valueStr);
 
-            // Nettoyer les espaces en trop
             date.erase(std::remove(date.begin(), date.end(), ' '), date.end());
             valueStr.erase(std::remove(valueStr.begin(), valueStr.end(), ' '), valueStr.end());
 
@@ -112,14 +110,13 @@ void BitcoinExchange::processInputFile(const std::string& inputFilename)
                 continue;
             }
             
-            // Convertir valueStr en double
             std::istringstream iss(valueStr);
             iss >> value;
 			if (iss.fail() || !iss.eof()) {
-    			std::cout << "Error: not a number" << '\n';
-                continue; // Échec de la conversion ou caractères restants
+    			std::cout << "Error: bad input " << '\n';
+                continue; 
         	}
-            // Vérifier si la valeur est positive et pas trop grande
+            
             if (value <= 0) {
                 std::cout << "Error: not a positive number." << '\n';
                 continue;
@@ -130,13 +127,12 @@ void BitcoinExchange::processInputFile(const std::string& inputFilename)
                 continue;
             }
 
-            // Trouver la date la plus proche antérieure
+            
             std::map<std::string, double>::iterator it = this->_priceData.lower_bound(date);
             if (it != this->_priceData.begin() && (it == this->_priceData.end() || it->first != date)) {
                 --it;
             }
-
-            // Calculer et afficher le résultat avec la date trouvée
+			
             double result = value * it->second;
             std::cout << date << " => " << value << " = " << result << '\n';
         }
