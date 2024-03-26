@@ -128,7 +128,11 @@ void BitcoinExchange::processInputFile(const std::string& inputFilename)
             }
 
             
-            std::map<std::string, double>::iterator it = this->_priceData.lower_bound(date);
+            std::map<std::string, double>::iterator it = this->_priceData.upper_bound(date);
+			if (it == this->_priceData.begin()) {
+    			std::cerr << "Erreur : no data available" << std::endl;
+    			continue;
+}
             if (it != this->_priceData.begin() && (it == this->_priceData.end() || it->first != date)) {
                 --it;
             }
