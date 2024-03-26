@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
         std::cout << calculator.getErrorMessage() << std::endl;
         return 1;
     }
-
+	
     std::cout << calculator.calculate() << std::endl;
     return 0;
 }

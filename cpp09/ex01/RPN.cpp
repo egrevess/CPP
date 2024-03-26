@@ -78,15 +78,14 @@ void RPN::parseExpression(const std::string& expression) {
             return;
         }
     }
+	if (this->_stack.size() != 1) {
+        this->_error = true;
+        this->_errorMessage = "Error: invalid expression";
+        return ;
+    }
 }
 
 int RPN::calculate() {
-    if (this->_stack.size() != 1) {
-        this->_error = true;
-        this->_errorMessage = "Error: invalid expression";
-        return 0;
-    }
-
     return pop();
 }
 

@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 			std::istringstream iss(argv[i]);
 			int n;
 			iss >> n;
-			if (iss.fail() || n <= 0) {
+			if (iss.fail() || n < 0) {
 				std::cerr << "Error: " << argv[i] << ": invalid number\n";
 				return 1;
 			}
